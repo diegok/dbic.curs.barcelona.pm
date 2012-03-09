@@ -1,4 +1,7 @@
 package Curs::Schema;
+
+# ABSTRACT: Schema class for barcelona.pm curs avançat
+
 use strict; use warnings;
 use parent 'DBIx::Class::Schema';
 
