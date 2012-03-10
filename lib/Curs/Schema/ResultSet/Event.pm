@@ -9,7 +9,12 @@ sub current {
     $query ||= {};
     $opts  ||= {};
 
-    $query->{start}   = { '<=' => DateTime->today };
+    # Hack para sqlite!
+    my $now = DateTime->now;
+    $now =~ s/T/ /;
+
+    $query->{start}   = { '<=' => $now };
+    $query->{end}     = { '>=' => $now };
     $opts->{order_by} = { order_by => 'start ASC' };
 
     $self->search( $query, $opts );

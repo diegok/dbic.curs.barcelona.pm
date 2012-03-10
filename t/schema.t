@@ -29,7 +29,7 @@ ok ( my $event = $schema->resultset('Event')->create({
         description => 'Something nice to do on a saturday!',
         creator_id  => $admin->id,
         start       => DateTime->new( year => 2012, month => 3, day => 10, hour => 9 ),
-        end         => DateTime->new( year => 2012, month => 3, day => 10, hour => 9, minute => 15 ),
+        end         => DateTime->new( year => 2012, month => 3, day => 10, hour => 19, minute => 15 ),
     }), 'Create event');
 
 if ( $schema->resultset('Event')->current->count ) {
