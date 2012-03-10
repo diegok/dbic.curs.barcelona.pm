@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use Test::More 'no_plan';
+use v5.10;
 
 use lib 't/lib';
 BEGIN { use_ok 'TestSchema' }
@@ -30,3 +31,7 @@ ok ( my $event = $schema->resultset('Event')->create({
         start       => DateTime->new( year => 2012, month => 3, day => 10, hour => 9 ),
         end         => DateTime->new( year => 2012, month => 3, day => 10, hour => 9, minute => 15 ),
     }), 'Create event');
+
+if ( $schema->resultset('Event')->current->count ) {
+    diag 'Veo que estas en el curso!';
+}
