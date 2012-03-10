@@ -42,7 +42,7 @@ __PACKAGE__->many_to_many( 'roles', 'user_roles', 'role' );
 __PACKAGE__->has_many( 'events', 'Curs::Schema::Result::Event', { 'foreign.creator_id' => 'self.id' } );
 
 __PACKAGE__->has_many( 'rel_assists', 'Curs::Schema::Result::EventUser', { 'foreign.user_id' => 'self.id' }, { cascade_delete => 1 });
-__PACKAGE__->many_to_many( 'assists', 'rel_assists', 'user' );
+__PACKAGE__->many_to_many( 'assists', 'rel_assists', 'event' );
 
 =head2 update_roles
  Set the user's roles
