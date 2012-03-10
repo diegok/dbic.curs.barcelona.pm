@@ -39,6 +39,11 @@ __PACKAGE__->add_unique_constraint( 'email', ['email'] );
 __PACKAGE__->has_many( 'user_roles', 'Curs::Schema::Result::UserRole', { 'foreign.user_id' => 'self.id' } );
 __PACKAGE__->many_to_many( 'roles', 'user_roles', 'role' );
 
+__PACKAGE__->has_many( 'events', 'Curs::Schema::Result::Event', { 'foreign.creator_id' => 'self.id' } );
+
+__PACKAGE__->has_many( 'rel_assists', 'Curs::Schema::Result::EventUser', { 'foreign.user_id' => 'self.id' }, { cascade_delete => 1 });
+__PACKAGE__->many_to_many( 'assists', 'rel_assists', 'user' );
+
 =head2 update_roles
  Set the user's roles
  Arguments: list of role names ('admin', 'editor', etc)
